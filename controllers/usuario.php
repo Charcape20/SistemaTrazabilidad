@@ -168,7 +168,6 @@ class UsuarioController{
                 $respuesta=$buscarUsuarioModel->buscarUsuariosModel($datosController,"t_usuarios","t_tipo_usuario");
                 foreach($respuesta as $item){
                     echo '<tr>
-                    <td>'.$item["id_user"].'</td>
                     <td>'.$item["dni"].'</td>
                     <td>'.$item["primer_nombre"].' '.$item["segundo_nombre"].' '.$item["ap_paterno"].' '.$item["ap_materno"].'</td>
                     <td>'.$item["usuario"].'</td>

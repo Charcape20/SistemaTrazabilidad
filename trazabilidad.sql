@@ -1,13 +1,13 @@
 create database if not exists trazabilidad;
 use trazabilidad;
-drop database trazabilidad;
+-- drop database trazabilidad;
 
 
 
 /* Tabla : estados */
 create table if not exists `t_estados` (
   `id_estado`   integer(11) not null auto_increment,
-  `tipo_estado` varchar(25) not null default '',
+  `tipo_estado` varchar(25) not null,
   constraint primary key (`id_estado`)
 )
   engine = InnoDB
