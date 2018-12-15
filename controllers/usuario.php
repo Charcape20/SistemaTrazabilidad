@@ -11,6 +11,13 @@ class UsuarioController{
     private $model_director;
     private $model_estudiante;
 
+    public function __construct()
+    {
+        $this->model_secretaria = new SecretariaModel();
+        $this->model_director = new DirectorModel();
+        $this->model_estudiante =  new EstudianteModel();
+    }
+
     public function mostrarUsuariosController(){
         $usuarioModel=new UsuarioModel();
         $respuesta=$usuarioModel->mostrarUsuariosModel("t_usuarios","t_tipo_usuario","t_estados");
@@ -43,8 +50,77 @@ class UsuarioController{
                             </div>
                             <div class="modal-body">
                                 <form action="" method="post">
-                                    <input type="hidden" name="id_user" value="'.$item["id_user"].'">';
-                require_once 'views/modules/usuario/usuario-editar.php';
+                                    <input type="hidden" name="id_user" value="'.$item["id_user"].'">
+                                    <div class="form-group">
+                                    <label for="" class="control-label">DNI</label>
+                                     <input type="text" class="form-control" name="dniEditar" placeholder="Ingresa tu dni" value="'.$item["dni"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Primer Nombre</label>
+                                    <input type="text" class="form-control" name="primerNombreEditar" placeholder="Ingresa tu Primer Nombre" value="'.$item["primer_nombre"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Segundo Nombre</label>
+                                    <input type="text" class="form-control" name="segundoNombreEditar" placeholder="Ingresa tu Segundo Nombre" value="'.$item["segundo_nombre"].'">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="" class="control-label">Apellido Paterno</label>
+                                    <input type="text" class="form-control" name="apellidoPaternoEditar" placeholder="Ingresa tu Apellido Paterno" value="'.$item["ap_paterno"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Apellido Materno</label>
+                                    <input type="text" class="form-control" name="apellidoMaternoEditar" placeholder="Ingresa tu Apellido Materno" value="'.$item["ap_materno"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Usuario</label>
+                                    <input type="text" class="form-control" name="usuarioEditar" placeholder="Ingresa tu Usuario" value="'.$item["usuario"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Nueva Contraseña</label>
+                                    <input type="password" class="form-control" name="passwordEditar" placeholder="Ingresa tu Nueva Contraseña">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Sexo</label>
+                                    <input type="text" class="form-control" name="sexoEditar" placeholder="Ingresa tu Sexo" value="'.$item["sexo"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label">Email</label>
+                                    <input type="email" class="form-control" name="emailEditar" placeholder="Ingresa tu Email" value="'.$item["email"].'">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="" class="control-label">Celular</label>
+                                   <input type="text" class="form-control" name="celularEditar" placeholder="Ingresa tu Celular" value="'.$item["celular"].'">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sel1">Tipo de Usuario</label>
+                                    <select class="form-control" id="selTipo" name="tipoEditar" disabled>
+                                    <option>'.$item["tipo_user"].'</option>
+                                    </select>
+                                </div>';
+                                if ($item["tipo_user"]=="Estudiante"){
+                                    $cod_estudiante = $this->model_estudiante->ObtenerCodigoEstudiante($item["id_user"]);
+                                    echo '
+                                    <div class="form-group">
+                                        <label for="" class="control-label">Codigo Estudiante</label>
+                                        <input type="text" name="codigoEditar" class="form-control" placeholder="Ingresa el Codigo de Estudiante" value="'.$cod_estudiante.'">
+                                    </div>';
+
+                                }else if($item["tipo_user"]=="Secretaria"){
+                                    $secretarias = $this->model_secretaria->Listar();
+                                    $objeto = new SecretariaModel();
+                                    
+                                }
+                                echo' <button type="submit" class="btn btn-primary">Guardar</button>
+                                 </form>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                 </div>
+                                </div>
+                                </div>
+                                </div>
+                                </tr>';
+             
 
         }
     }
@@ -108,16 +184,16 @@ class UsuarioController{
                 if ($idtipo == 2){
                     $sec->tipo_secretaria = $_POST["tipoNuevoSecretaria"];
                     $sec->id_user = intval($id_user);
-                    $this->model_secretaria = new SecretariaModel();
+                   
                     $this->model_secretaria->Registrar($sec);
                 }else if ($idtipo == 3){
                     $dir->id_user = intval($id_user);
-                    $this->model_director = new DirectorModel();
+                    
                     $this->model_director->Registrar($dir);
                 }else if($idtipo == 4){
                     $es->cod_estudiante = $_POST["codigoNuevo"];
                     $es->id_user = intval($id_user);
-                    $this->model_estudiante =  new EstudianteModel();
+             
                     $this->model_estudiante->Registrar($es);
                    
                 }
@@ -194,8 +270,62 @@ class UsuarioController{
                                 </div>
                                 <div class="modal-body">
                                     <form action="" method="post">
-                                        <input type="hidden" name="id_user" value="'.$item["id_user"].'">';
-                                        require_once 'views/modules/usuario/usuario-editar.php';
+                                        <input type="hidden" name="id_user" value="'.$item["id_user"].'">
+                                                    
+                    <div class="form-group">
+                    <label for="" class="control-label">DNI</label>
+                    <input type="text" class="form-control" name="dniEditar" placeholder="Ingresa tu dni" value="'.$item["dni"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Primer Nombre</label>
+                    <input type="text" class="form-control" name="primerNombreEditar" placeholder="Ingresa tu Primer Nombre" value="'.$item["primer_nombre"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Segundo Nombre</label>
+                    <input type="text" class="form-control" name="segundoNombreEditar" placeholder="Ingresa tu Segundo Nombre" value="'.$item["segundo_nombre"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" name="apellidoPaternoEditar" placeholder="Ingresa tu Apellido Paterno" value="'.$item["ap_paterno"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Apellido Materno</label>
+                    <input type="text" class="form-control" name="apellidoMaternoEditar" placeholder="Ingresa tu Apellido Materno" value="'.$item["ap_materno"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Usuario</label>
+                    <input type="text" class="form-control" name="usuarioEditar" placeholder="Ingresa tu Usuario" value="'.$item["usuario"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Nueva Contraseña</label>
+                    <input type="password" class="form-control" name="passwordEditar" placeholder="Ingresa tu Nueva Contraseña">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Sexo</label>
+                    <input type="text" class="form-control" name="sexoEditar" placeholder="Ingresa tu Sexo" value="'.$item["sexo"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Email</label>
+                    <input type="email" class="form-control" name="emailEditar" placeholder="Ingresa tu Email" value="'.$item["email"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Email</label>
+                <input type="text" class="form-control" name="celularEditar" placeholder="Ingresa tu Celular" value="'.$item["celular"].'">
+                </div>
+                <div class="form-group">
+                    <label for="" class="control-label">Tipo</label>
+                    <input type="text" class="form-control" placeholder="Ingresa tu Email" value="'.$item["tipo_user"].'">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+                </div>
+                </div>
+                </tr>';
                 }
             }
         }
