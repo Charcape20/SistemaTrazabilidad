@@ -30,16 +30,19 @@ class EstudianteModel{
         }
     }
 
-    public function Obtener($id)
+    
+    public function ObtenerCodigoEstudiante($id_user)
     {
         try {
-            $sql = $this->pdo->conectar()->prepare("select * from t_estudiante where id_user=?");
-            $sql->execute(array($id));
-            return $sql->fetch(PDO::FETCH_OBJ);
+            $sql = $this->pdo->conectar()->prepare("select cod_estudiante from t_estudiante where id_user=?");
+            $sql->execute(array($id_user));
+            $row = $sql->fetch();
+            return $row['cod_estudiante'];
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
+   
 
 
     public function Registrar(EstudianteModel $data){

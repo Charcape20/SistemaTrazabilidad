@@ -27,6 +27,17 @@ class SecretariaModel{
         }
     }
 
+    public function ObtenerTipoSecretaria($id_user)
+    {
+        try {
+            $sql = $this->pdo->conectar()->prepare("select tipo_secretaria from t_secretaria where id_user=?");
+            $sql->execute(array($id_user));
+            $row = $sql->fetch();
+            return $row['tipo_secretaria'];
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
    
 
 
