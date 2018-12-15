@@ -1,6 +1,6 @@
 create database if not exists trazabilidad;
 use trazabilidad;
--- drop database trazabilidad;
+
 
 
 
