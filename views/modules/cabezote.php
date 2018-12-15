@@ -1,4 +1,13 @@
 <div class="part-top">
+        <div class="mensajes  col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <ul>
+                <li style="background: #333">
+                    <a href="mensajes" style="color: #fff">
+                        <i class=" mt-5 fa fa-envelope"></i>
+                    </a>;
+                </li>
+            </ul> 
+        </div>
         <div class="text-center time">
             <br>
             <p>

@@ -6,6 +6,7 @@
                $enlaces == "ingreso" ||
                $enlaces == "documento" ||
                $enlaces == "usuario" ||
+               $enlaces == "mensajes" ||
                $enlaces == "perfil" ||
                $enlaces == "salir"){
     
