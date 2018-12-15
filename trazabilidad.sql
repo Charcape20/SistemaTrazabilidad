@@ -1,9 +1,6 @@
 create database if not exists trazabilidad;
 use trazabilidad;
 
-
-
-
 /* Tabla : estados */
 create table if not exists `t_estados` (
   `id_estado`   integer(11) not null auto_increment,
