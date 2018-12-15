@@ -16,6 +16,7 @@
             else{
                 $enlaces = "index";
             }
+            echo ucfirst($enlaces);
         ?>
     </title>
     <link rel="icon" href="views/images/logo.ico">
