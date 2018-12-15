@@ -11,12 +11,9 @@
     <title>
         <?php 
             if(isset($_GET["action"])){
-
                 $enlaces = $_GET["action"];
-    
             }
             else{
-    
                 $enlaces = "index";
             }
         ?>
