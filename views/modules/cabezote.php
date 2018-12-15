@@ -22,7 +22,7 @@
         </div>
         <div class="img-user">
             <img src="images/photo.jpg" alt="">
-            <p id="member">Username<span id="agregar" class="fa fa-chevron-down" onclick="mostrar_ocultar('admin')"></span>
+            <p id="member"><?php echo $_SESSION["usuario"]?><span id="agregar" class="fa fa-chevron-down" onclick="mostrar_ocultar('admin')"></span>
                 <br>
                 <ol id="admin" style="display:none" >
                     <li><a href=""><i class="fa fa-user"></i> Editar Perfil</a></li>
