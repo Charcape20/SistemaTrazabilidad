@@ -5,6 +5,7 @@
             if($enlaces == "inicio" ||
                $enlaces == "ingreso" ||
                $enlaces == "documento" ||
+               $enlaces == "usuario" ||
                $enlaces == "perfil" ||
                $enlaces == "salir"){
     
@@ -15,9 +16,7 @@
                 $module = "views/modules/ingreso.php";
             }
 
-            else if($enlaces == "usuario"){
-                $module = "views/modules/usuario/".$enlaces.".php";
-            }
+            
     
             else{
                 $module = "views/modules/ingreso.php";		
