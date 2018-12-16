@@ -1,83 +1,120 @@
 <?php
+require_once 'conexion.php';
 
-class Tipotramite
+class TipotramiteModel
 {
-    private $pdo;
     public $id_tipo_tramite;
     public $nombre_tipo_tramite;
     public $descripcion;
 
-    public function __construct()
+    public function mostrarTipotramiteModel($tabla1)
     {
         try {
-            $this->pdo = new Conexion;
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Listar()
-    {
-        $sql = $this->pdo->conectar()->prepare("Select * From trazabilidad.t_tipo_tramite");
-        $sql->execute();
-        return $sql->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function Obtener($id)
-    {
-        try {
-            $sql = $this->pdo->conectar()->prepare("Select * From trazabilidad.t_tipo_tramite 
-                                                              where id_tipo_tramite=?");
-            $sql->execute(array($id));
-            return $sql->fetch(PDO::FETCH_OBJ);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Eliminar($id)
-    {
-        try {
-            $sql = $this->pdo->conectar()->prepare("Delete From trazabilidad.t_tipo_tramite
-                                                            Where id_tipo_tramite=?");
-            $sql->execute(array($id));
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-    }
-
-    public function Actualizar($data)
-    {
-        try {
-            $sql = $this->pdo->conectar()->prepare("Update trazabilidad.t_tipo_tramite 
-                                                              Set nombre_tipo_tramite=?,
-                                                                  descripcion=? 
-                                                              where id_tipo_tramite=?");
-            $sql->execute(
-                array(
-                    $data->nombre_tipo_tramite,
-                    $data->descripcion,
-                    $data->id_tipo_tramite
-                )
+            $con = new Conexion();
+            $stmt = $con->conectar()->prepare(
+                "Select * From $tabla1"
             );
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+            $stmt->close();
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
-    public function Registrar($data)
+    public function Registrar(TipotramiteModel $data)
     {
         try {
-            $sql = $this->pdo->conectar()->prepare("Insert Into trazabilidad.t_tipo_tramite(nombre_tipo_tramite, descripcion) 
-                                                            Value (?,?)");
-            $sql->execute(array(
-                    $data->nombre_tipo_tramite,
-                    $data->descripcion
-                )
+            $sql = "INSERT INTO t_tipo_tramite(nombre_tipo_tramite, descripcion)
+		        VALUES (?, ?)";
 
-            );
+            $con = new Conexion();
+            $stmt = $con->conectar()->prepare($sql)
+                ->execute(
+                    array(
+                        $data->nombre_tipo_tramite,
+                        $data->descripcion,
+                    )
+                );
+
         } catch (Exception $e) {
             die($e->getMessage());
         }
+    }
+
+    public function Obteneridttramite($nombre)
+    {
+        try {
+
+            $con = new Conexion();
+            $stm = $con->conectar()->prepare("SELECT id_user FROM trazabilidad.t_tipo_tramite WHERE nombre_tipo_tramite = ?");
+
+            $stm->execute(array($nombre));
+
+            $row = $stm->fetch();
+            return $row['nombre_tipo_tramite'];
+
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function modificarTipotramiteModel($datosModel, $tabla)
+    {
+        $con = new Conexion();
+        $stmt = $con->conectar()->prepare("update $tabla set nombre_tipo_tramite=:nombre_tipo_tramite,descripcion=:descripcion where id_tipo_tramite=:id");
+
+        $stmt->bindParam(":id",$datosModel["id_tipo_tramite"],PDO::PARAM_INT);
+        $stmt->bindParam(":nombre_tipo_tramite", $datosModel["nombre_tipo_tramite"], PDO::PARAM_STR);
+        $stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
+
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+
+        $stmt->close();
+
+    }
+
+    public function eliminarTipotramiteModel($datosModel, $tabla)
+    {
+        $con = new Conexion();
+        $stmt = $con->conectar()->prepare("DELETE FROM $tabla WHERE id_tipo_tramite = :id_tipo_tramite");
+
+        $stmt->bindParam(":id_tipo_tramite", $datosModel, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+
+            return "ok";
+
+        } else {
+
+            return "error";
+
+        }
+
+        $stmt->close();
+
+    }
+
+    public function buscarTipotramiteModel($datosModel, $tabla)
+    {
+        $con = new Conexion();
+        $stmt = $con->conectar()->prepare(
+            "Select * From $tabla where nombre_tipo_tramite=:nombre_tipo_tramite"
+        );
+
+        $stmt->bindParam(":nombre_tipo_tramite", $datosModel, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+        $stmt->close();
     }
 }
