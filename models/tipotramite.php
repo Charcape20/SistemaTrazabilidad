@@ -32,14 +32,15 @@ class TipotramiteModel
 		        VALUES (?, ?)";
 
             $con = new Conexion();
-            $stmt = $con->conectar()->prepare($sql)
-                ->execute(
-                    array(
-                        $data->nombre_tipo_tramite,
-                        $data->descripcion,
-                    )
-                );
 
+            if ($con->conectar()->prepare($sql)->execute(array(
+                $data->nombre_tipo_tramite,
+                $data->descripcion,
+            ))) {
+                return "ok";
+            } else {
+                return "error";
+            }
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -67,7 +68,7 @@ class TipotramiteModel
         $con = new Conexion();
         $stmt = $con->conectar()->prepare("update $tabla set nombre_tipo_tramite=:nombre_tipo_tramite,descripcion=:descripcion where id_tipo_tramite=:id");
 
-        $stmt->bindParam(":id",$datosModel["id_tipo_tramite"],PDO::PARAM_INT);
+        $stmt->bindParam(":id", $datosModel["id_tipo_tramite"], PDO::PARAM_INT);
         $stmt->bindParam(":nombre_tipo_tramite", $datosModel["nombre_tipo_tramite"], PDO::PARAM_STR);
         $stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
 
