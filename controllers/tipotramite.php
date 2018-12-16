@@ -59,14 +59,19 @@ class TipotramiteController
 
 
         }
+
+        if($respuesta == "ok"){
+            echo'<script>
+                    window.location="tipotramite";
+                </script>';
+        }
     }
 
     public function guardarTipotramiteController()
     {
 
-        if (isset($_POST["nombre_tipo_tramite_nuevo"])) {
-            if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["nombre_tipo_tramite_nuevo"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["descripcion_nuevo"])) {
+        if (isset($_POST["nombre_tipo_tramite_nuevo"]) && isset($_POST["descripcion_nuevo"])) {
+            
 
                 //Se Instancian de la clase UsuarioModel
                 $alm = new TipotramiteModel();
@@ -76,22 +81,26 @@ class TipotramiteController
                 //luego se registran los datos
                 $this->model = new TipotramiteModel();
                 $this->model->Registrar($alm);
-            }
+            
         }
     }
 
     public function modificarTipotramiteController()
     {
-        if (isset($_POST["nombre_tipo_tramite"])) {
-            if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["nombre_tipo_tramite"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["descripcion"])) {
+        if (isset($_POST["nombre_tipo_tramite"]) && isset($_POST["descripcion"])) {
+            
 
                 $datosController = array("id_tipo_tramite"=>$_POST["id_tipo_tramite"],
                     "nombre_tipo_tramite" => $_POST["nombre_tipo_tramite"],
                     "descripcion" => $_POST["descripcion"]);
                 $editarttramiteModel = new TipotramiteModel();
                 $respuesta = $editarttramiteModel->modificarTipotramiteModel($datosController, "t_tipo_tramite");
-            }
+                if($respuesta == "ok"){
+                    echo'<script>
+                            window.location="tipotramite";
+                        </script>';
+                }
+            
         }
     }
 
@@ -100,7 +109,12 @@ class TipotramiteController
         $eliminarTtramite = new TipotramiteModel();
         if (isset($_GET["idBorrar"])) {
             $datosController = $_GET["idBorrar"];
-            $eliminarTtramite->eliminarTipotramiteModel($datosController, "t_tipo_tramite");
+            $respuesta= $eliminarTtramite->eliminarTipotramiteModel($datosController, "t_tipo_tramite");
+            if($respuesta == "ok"){
+                echo'<script>
+                        window.location="tipotramite";
+                    </script>';
+            }
         }
     }
 
