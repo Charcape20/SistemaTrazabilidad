@@ -51,7 +51,9 @@
         minutos=revisarTiempo(minutos);
         segundos=revisarTiempo(segundos);
         document.getElementById(relo).innerHTML=horas+":"+minutos+":"+segundos;
-        tiempo=setTimeout(function(){Comenzar()},1000); 
+        tiempo=setInterval(() => {
+            Comenzar()
+        },1000);
         /*en tiempo creamos una funcion generica que cada 
         500 milisegundos ejecuta la funcion Comenzar()*/
     }
