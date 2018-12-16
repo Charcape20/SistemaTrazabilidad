@@ -223,6 +223,12 @@ class UsuarioController{
                 $editarUsuarioModel=new UsuarioModel();
                 $respuesta=$editarUsuarioModel->modificarUsuarioModel($datosController,"t_usuarios");
 
+                /*Para que sea vea al instante */
+                if($respuesta == "ok"){
+                    echo'<script>
+                            window.location="usuario";
+                        </script>';
+                }
             }
         }
     }
@@ -231,7 +237,13 @@ class UsuarioController{
         $eliminarUsuario=new UsuarioModel();
         if(isset($_GET["idBorrar"])){
             $datosController=$_GET["idBorrar"];
-            $eliminarUsuario->eliminarUsuarioModel($datosController,"t_usuarios");
+            $respuesta=$eliminarUsuario->eliminarUsuarioModel($datosController,"t_usuarios");
+
+            if($respuesta == "ok"){
+                echo'<script>
+                        window.location="usuario";
+                    </script>';
+            }
         }
     }
 
