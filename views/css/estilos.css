@@ -1,0 +1,357 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu{
+    width: 250px;
+    background: #222d32;
+    height: 50vw !important;
+}
+.menu li:nth-child(2){
+    margin-top: 50px;
+}
+ul li{
+    margin-bottom: 30px;
+    margin-left: 50px;
+    list-style: none;
+}
+ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+ul li a:hover{
+    text-decoration: none;
+    color: aquamarine;
+}
+
+.submenu-reportes li a{
+   font-size:12px;    
+}
+.submenu-reportes li{
+    margin-bottom: 20px;
+    margin-left: 75px;
+}
+.submenu-reportes li:nth-child(2){
+    margin-top: 0px;
+}
+.logo img,.img-user img{
+    border-radius:100px;
+    width: 120px !important;
+    margin-left: 60px;
+    margin-top: 30px;
+}
+.img-user img{
+    width: 80px !important;
+}
+.part-top{
+    margin-left: 250px;
+    margin-top: -51.5vw;
+    box-shadow: 0px 1px 5px #333;
+    height: 100px;
+}
+.time p{
+    text-align: center;
+    font-size: 15px;
+}
+.img-user{
+    text-align: end;
+    margin-right: 50px;
+    margin-top: -115px;
+    margin-bottom: 10px;
+}
+
+.part-top .mensajes ul li{
+    position: absolute;
+    margin-right: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 30px;
+}
+.part-top .mensajes ul li i{
+    margin-top: 12px !important;
+    margin-left: 7px;
+}
+.img-user img{
+    width: 50px !important;
+    margin-right: 5px;
+}
+#admin{
+    box-shadow: 0px 1px 1px #333;
+    text-align: right;
+    margin-left: 82%;
+    width: 230px;
+    height: 70px;
+    padding: 5px;
+}
+#admin li{
+    list-style: none;
+    text-decoration: none;
+}
+#admin li a:hover{
+    text-decoration: none;
+}
+
+span{
+    margin-left: 10px;
+}
+.fa-chevron-down:hover,.fa-chevron-up:hover{
+    cursor: pointer;
+}
+
+.inicio{
+    margin-left: 270px !important;
+    margin-top: 20px;
+}
+.cuadros{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-top: 50px;
+}
+.cuadros-inicio div{
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+.cuadros-inicio:nth-child(2){
+    margin-top: 0px;
+}
+.cuadros-inicio div span{
+    margin: auto;
+    color: white;
+    font-size: 40px;
+    margin-top: 30%;
+}
+.cuadros-inicio div p{
+    font-size: 12px;
+    color: white;
+    margin-bottom: 1px;
+}
+.usuarios{
+    margin-left: 270px !important;
+}
+.buscar{
+    margin-top: 30px;
+}
+.buscar input{
+    height: 30px;
+}
+.fa-search{
+    margin-left: -10px;
+    height: 30px;
+}
+.table{
+    margin-top: 20px;
+}
+.modificar{
+    margin-left: 0px;
+}
+a .eliminar{
+    margin-left: -60px;
+    height: 40px;
+    
+}
+.eliminar,.modificar{
+    width: 40px;
+    height: 40px;
+}
+.fa-search,.nuevo-user{
+    margin-top: -5px;
+}
+.nuevo-user{
+    height: 30px;
+    text-align: center;
+    /* margin-left:60%; */
+}
+
+/*Inicio Login*/
+.completo {
+    background-image: url("../images/fondo.png");
+    height: 100vh; 
+}
+.login {
+    display: flex;
+   
+}
+
+.caja1 {
+    width: 40%;
+    margin-top: 12%;
+    margin-left: 10%;
+}
+
+.sector1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.icono {
+    height: 65px;
+}
+
+.titulo-principal {
+    margin: 0;
+    margin-left: 10px;
+    font-family: 'Bungee', cursive;
+    font-size: 25px;
+    height: 25px;
+}
+
+.titulo-secundario {
+    margin: 0;
+    text-align: center;
+    font-family: 'Bungee', cursive;
+    font-size: 33px;
+    height: 33px;
+    margin-left: 10px;
+}
+
+.sector2 {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.imagen2 {
+    text-align: center;
+}
+
+.libros {
+    width: 35%;
+}
+
+.rectangulo {
+    margin-top: 12%;
+    width: 5px;
+    background: hsl(200, 10%, 55%);
+    border-radius: 3px / 4px;
+}
+
+
+.caja2 {
+    width: 40%;
+    margin-top: 13%;
+    margin-right: 10%;
+}
+
+.titulo-inicio {
+    font-family: 'Bungee', cursive;
+    font-size: 2em;
+    text-align: center;
+}
+
+.boton {
+    background: hsl(200, 70%, 70%);
+    border: solid hsl(200, 100%, 60%);
+    font-family: 'Bungee', cursive;
+    border-radius: 15px;
+    margin-left: 20%;
+    font-size: .9em;
+    width: 200px;
+    height: 30px;
+}
+
+.texto1 {
+    margin-top: 5px;
+    padding-top: 10px;
+    font-family: 'Heebo', sans-serif;
+    font-size: .85em;
+    margin-left: 18px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.sector3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.opciones {
+    display: flex;
+}
+
+.usuario {
+    display: flex;
+    padding: 10px;
+}
+
+.contra {
+    display: flex;
+    padding: 10px;
+}
+
+.icon_login {
+    width: 30px;
+    height: 30px;
+    padding: 1px;
+}
+
+.form_login {
+    margin-left: 10px;
+    width: 270px;
+}
+/* Fin Login */
+/*Mensajes*/
+.bandejaMensajes{
+    margin-left: 260px;
+    margin-top: 20px;
+}
+.text-right{
+   margin-left: 98%;
+}
+.well{
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    margin-bottom: 20px;
+}
+.well p{
+    margin-top: -20px;
+}
+.well .form-control{
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    color: #555;
+    background-color: #fff;
+}
+/* Fin Mensajes */
+
+/* Lectura Mensajes */
+.botonEnviarCorreo{
+    margin-left: 110%;
+    margin-top: -80px;
+}
+.lecturaMensajes{
+    margin-left: 50%;
+    position: absolute;
+    margin-top: -18%;
+}
+.visorMensajes{
+    top:0;
+}
+.visorMensajes form .form-control{
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 14px;
+    padding: 6px 12px;
+    height: 34px;
+}
+.visorMensajes form textarea{
+    width: 100%;
+    height: 150px !important;
+}
+
+/* FIN LECTURA MENSAJES */
